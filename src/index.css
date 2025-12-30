@@ -3,31 +3,34 @@
 :root {
   /* Royal Luxury Palette */
   --color-primary: #4B2C5E;
-  /* Royal Purple */
   --color-secondary: #E9DDF2;
-  /* Soft Lavender */
   --color-bg: #FAF7F3;
-  /* Warm Ivory */
   --color-card-bg: #F3ECF8;
-  /* Light Lilac */
   --color-card-hover: #FFFFFF;
   --color-text-main: #2B2B2B;
-  /* Deep Charcoal */
   --color-text-muted: #5E5E5E;
   --color-accent: #C9A24D;
-  /* Soft Gold */
   --color-border: #E2D5EB;
 
-  /* Typography */
+  /* Typography - Fluid Scales */
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Outfit', sans-serif;
 
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 3rem;
-  --spacing-xl: 6rem;
+  /* Fluid Font Sizes: Mobile (base) -> Desktop (target) */
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  --fs-h2: clamp(1.8rem, 3vw + 1rem, 2.5rem);
+  --fs-h3: clamp(1.3rem, 2vw + 0.5rem, 1.75rem);
+  --fs-body: clamp(0.95rem, 1vw + 0.5rem, 1.1rem);
+  --fs-sm: clamp(0.8rem, 0.5vw + 0.5rem, 0.95rem);
+
+  /* Spacing - Fluid Scales */
+  --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+  --spacing-sm: clamp(0.75rem, 1.5vw, 1rem);
+  --spacing-md: clamp(1rem, 2vw, 1.5rem);
+  --spacing-lg: clamp(2rem, 4vw, 3rem);
+  --spacing-xl: clamp(3rem, 6vw, 6rem);
+  --spacing-xxl: clamp(4rem, 8vw, 8rem);
+  /* New larger spacing */
 
   /* Radius */
   --radius-sm: 8px;
@@ -50,17 +53,18 @@ body {
   background: radial-gradient(circle at top right, #faf7f3 0%, #f5eff9 100%);
   color: var(--color-text-main);
   line-height: 1.6;
+  font-size: var(--fs-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 .brand-micro-icon {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 0.5em;
+  height: 0.5em;
   background-color: var(--color-accent);
   border-radius: 50%;
-  margin: 0 8px;
+  margin: 0 0.5em;
   vertical-align: middle;
   opacity: 0.8;
   position: relative;
@@ -87,6 +91,19 @@ h4 {
   font-weight: 500;
   color: var(--color-primary);
   line-height: 1.2;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
 }
 
 /* Container */
@@ -238,17 +255,19 @@ h4 {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: var(--fs-h1);
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
+  line-height: 1.1;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
   color: var(--color-text-muted);
   max-width: 600px;
   margin: 0 auto;
   font-weight: 300;
+  line-height: 1.5;
 }
 
 .section-divider {
@@ -272,20 +291,20 @@ h4 {
 }
 
 .concern-title {
-  font-size: 2.2rem;
+  font-size: var(--fs-h2);
   color: var(--color-primary);
   margin-bottom: 0.25rem;
 }
 
 .concern-desc {
-  font-size: 1.1rem;
+  font-size: var(--fs-body);
   color: var(--color-text-muted);
 }
 
 /* Ingredient Grid */
 .ingredient-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -341,7 +360,7 @@ h4 {
 }
 
 .ingredient-name {
-  font-size: 1.35rem;
+  font-size: var(--fs-h3);
   color: var(--color-primary);
   font-family: var(--font-heading);
 }
@@ -426,10 +445,6 @@ h4 {
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
   .ingredient-grid {
     grid-template-columns: 1fr;
   }
@@ -516,7 +531,7 @@ h4 {
 }
 
 .result-title {
-  font-size: 2.2rem;
+  font-size: var(--fs-h2);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -585,7 +600,7 @@ h4 {
 }
 
 .sunscreen-title {
-  font-size: 2.5rem;
+  font-size: var(--fs-h2);
   margin-bottom: var(--spacing-md);
   color: var(--color-primary);
 }
@@ -708,7 +723,7 @@ h4 {
 }
 
 .glossary-title {
-  font-size: 2.5rem;
+  font-size: var(--fs-h2);
   margin-bottom: var(--spacing-xs);
 }
 
@@ -752,7 +767,7 @@ h4 {
 
 .glossary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-sm);
 }
 
